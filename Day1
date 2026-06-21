@@ -1,0 +1,151 @@
+Day 1 Networking fundamentals
+What is the Internet?
+The internet is the biggest network of networks — it connects billions of devices across the globe. It's what lets you load a website, push code to GitHub, or hit an API from your server. None of it is magic. The internet works because of a stack of rules and technologies: IP addressing, routing, DNS, and protocols. Every request you make goes through multiple devices and layers before it reaches its destination.
+
+How the Internet Works
+When you type a URL into your browser, a lot happens in the background. First, DNS translates a human-readable name like google.com into a machine-readable IP address. Your device then sends a request using TCP/IP to that IP. The request hops through routers, firewalls, and sometimes NAT before reaching the server. The server responds, and your browser renders the page. All of this happens in seconds, but it involves hundreds of devices and routing decisions — which is exactly why understanding this flow matters once you're deploying anything to production.
+
+What is a Subnet?
+A subnet (subnetwork) is what you get when you break a large network into smaller, logical chunks. It helps manage traffic and improves security. For example, a company might put HR and Engineering on separate subnets so each has different access levels. In AWS, GCP, or Azure, subnets isolate services, restrict access, and organize infrastructure. As a DevOps engineer, you'll set up subnets constantly while building VPCs — and if you don't understand subnetting, you can accidentally expose an app to the public internet, or accidentally cut it off entirely.
+
+IPv4 vs IPv6
+IPv4 is the older standard, using 32-bit addresses like 192.168.1.1. With only about 4.3 billion possible addresses, the world is running out of them. IPv6 solves that with 128-bit addresses, like 2001:0db8:85a3:0000:0000:8a2e:0370:7334, giving us trillions of unique addresses along with some built-in security and routing improvements. Most systems today support both. You don't need to memorize the full spec, but you do need to know when IPv6 is in play, how it affects routing, and how to spot a basic address conflict.
+
+Why DevOps Engineers Must Understand Networking
+DevOps work is built on servers, containers, microservices, APIs, and CI/CD pipelines — all connected over a network. Skip the networking basics and you'll hit a wall the moment something breaks. A CI/CD job might fail because the runner can't reach the repo behind a firewall rule. A Kubernetes service might be unreachable because of a bad subnet config. Without the fundamentals, problems like these eat hours or days. With them — IPs, DNS, ports, NAT, firewalls, routing — you fix the same issue in minutes.
+
+
+
+Hans on 
+
+
+
+Reachability
+Command
+
+ping google.com -c 4
+Output
+
+4 packets transmitted, 4 received, 0% packet loss, time 3004ms
+rtt min/avg/max/mdev = 17.9/18.2/18.6/0.25 ms
+Observation: Avg latency ~18 ms, 0% packet loss — connection is stable.
+
+Listening Ports
+Command
+
+ss -tulpn
+Output
+
+tcp   LISTEN   0.0.0.0:22    sshd
+tcp   LISTEN   0.0.0.0:80    nginx
+udp   LISTEN   0.0.0.0:68    dhclient
+Observation: SSH on 22, web server on 80 — remote login and a web service are both active on this host.
+
+Name Resolution
+Command
+
+dig google.com
+Output
+
+Minimize image
+Edit image
+Delete image
+
+Add a caption (optional)
+Ports
+ss -tulpn 
+Minimize image
+Edit image
+Delete image
+
+Add a caption (optional)
+Observation:
+
+
+
+SSH service listening on port 22.
+
+This means remote login is enabled.
+
+HTTP Check
+curl -I https://google.com 
+Output:
+
+HTTP/2 301
+
+
+
+Minimize image
+Edit image
+Delete image
+
+Add a caption (optional)
+Observation: Web server reachable and responding — 301 means it's redirecting to the canonical URL.
+
+traceroute Command
+What is traceroute?
+traceroute shows the path (hops) that packets take from your machine to a destination server.
+
+It helps you understand:
+
+
+
+Where the network is slow
+
+Where the connection is failing
+
+How many routers are between you and the target
+
+
+
+
+Basic command
+traceroute google.com 
+
+Example output
+1  192.168.1.1     1.2 ms
+2  10.10.0.1       5.4 ms
+3  72.14.233.21    20.1 ms
+4  142.250.183.14  22.3 ms 
+
+How to read it
+Each line = one hop (router).
+
+Numbers on the right = latency (time taken).
+
+  * = no response from that hop.
+
+
+
+
+Real-world use
+If a website is slow:
+
+Run:
+
+Check which hop has:
+
+That’s where the problem may be.
+
+Listening Ports
+Command
+
+ss -tulpn
+Output
+
+tcp   LISTEN   0.0.0.0:22    sshd
+tcp   LISTEN   0.0.0.0:80    nginx
+udp   LISTEN   0.0.0.0:68    dhclient
+Observation: SSH on 22, web server on 80 — remote login and a web service are both active on this host.
+
+
+
+Reflection
+Fastest command when something is broken: ping gives the quickest signal on connectivity; ip route tells you where the packet would even try to go.
+
+If routing looks wrong: check the Internet layer (routing table, default gateway), then the Link layer (ARP — is the gateway's MAC even resolved?).
+
+If a service is unreachable but the host pings fine: the issue is at the Transport/Application layer — check the listening port with ss -tulpn and the service logs.
+
+Two follow-up checks in a real incident: systemctl status <service> and journalctl -u <service> -n 50.
+
