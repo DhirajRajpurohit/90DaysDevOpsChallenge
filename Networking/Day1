@@ -41,46 +41,7 @@ tcp   LISTEN   0.0.0.0:80    nginx
 udp   LISTEN   0.0.0.0:68    dhclient
 Observation: SSH on 22, web server on 80 — remote login and a web service are both active on this host.
 
-Name Resolution
-Command
 
-dig google.com
-Output
-
-Minimize image
-Edit image
-Delete image
-
-Add a caption (optional)
-Ports
-ss -tulpn 
-Minimize image
-Edit image
-Delete image
-
-Add a caption (optional)
-Observation:
-
-
-
-SSH service listening on port 22.
-
-This means remote login is enabled.
-
-HTTP Check
-curl -I https://google.com 
-Output:
-
-HTTP/2 301
-
-
-
-Minimize image
-Edit image
-Delete image
-
-Add a caption (optional)
-Observation: Web server reachable and responding — 301 means it's redirecting to the canonical URL.
 
 traceroute Command
 What is traceroute?
