@@ -55,7 +55,7 @@ These are the everyday commands for navigating and managing files and folders.
 **The `rm -d` vs `rm -rf` difference, in practice:** `rm -d` only works on an empty folder — it's a safety net, same idea as `rmdir`. If the folder still has files inside it, `rm -d` (and `rmdir`) will refuse with a "directory not empty" error. `rm -rf` deletes the folder and everything inside it, no matter what's there and with no confirmation prompt — so it's the one to be careful with.
  
 
-https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/687dc52eb74ddd2cd316f727ff04b6675793c40f/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-25%20154717.png
+![image alt](https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/687dc52eb74ddd2cd316f727ff04b6675793c40f/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-25%20154717.png)
  
 ### A few extra commands I picked up alongside these
  
@@ -103,7 +103,7 @@ Both let you edit files directly from the terminal, but they're built very diffe
 - **nano** — beginner-friendly, shows the available shortcuts at the bottom of the screen, works the moment you open it (just start typing).
 - **vim** — far more powerful once you know it, but has "modes" (press `i` for insert mode to start typing, `Esc` to leave it, then `:wq` to save and quit, or `:q!` to quit without saving). Steeper learning curve, but faster once you know it.
 
-https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/687dc52eb74ddd2cd316f727ff04b6675793c40f/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-25%20155612.png
+![image alt](https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/687dc52eb74ddd2cd316f727ff04b6675793c40f/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-25%20155612.png)
  
 **Rule of thumb:** start with `nano` for quick edits; learn `vim` once comfortable, since it's available on almost every Linux system by default, even minimal ones.
  
@@ -135,38 +135,24 @@ Running `upgrade` without `update` first means you might be upgrading against an
  
 Here's exactly what I ran:
  
-```
-https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/687dc52eb74ddd2cd316f727ff04b6675793c40f/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-25%20160303.png
-```
+![image alt](https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/687dc52eb74ddd2cd316f727ff04b6675793c40f/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-25%20160303.png)
  
 `useradd -m dhiraj -s /bin/bash` creates a new user named `dhiraj`, with `-m` creating their home directory automatically, and `-s /bin/bash` setting bash as their default shell.
  
 `passwd dhiraj` sets a password for that user — prompts you to type and retype the new password.
  
 Then, to actually switch into that user's session:
-```
-su dhiraj
-```
+![image alt](https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/3b1c525a705d453b36470308d2eb6cf116ab1a64/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-25%20160605.png)
+
 `su` (switch user) logs you into another user's session — asks for that user's password before letting you in.
  
 Here's the real run from my terminal:
-```
-ubuntu@ip-172-31-26-16:/home$ sudo useradd -m dhiraj -s /bin/bash
-ubuntu@ip-172-31-26-16:/home$ sudo paswd dhiraj
-sudo: 'paswd': command not found
-ubuntu@ip-172-31-26-16:/home$ sudo passwd dhiraj
-New password:
-Retype new password:
-passwd: password updated successfully
-ubuntu@ip-172-31-26-16:/home$ su dhiraj
-Password:
-dhiraj@ip-172-31-26-16:/home$
-```
+
+![image alt](https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/3b1c525a705d453b36470308d2eb6cf116ab1a64/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-25%20160605.png)
  
 **Observe:** I mistyped `passwd` as `paswd` first — Linux immediately said "command not found" instead of silently failing, so the typo was obvious right away. After correcting it, the password was set, and `su dhiraj` dropped me into that new user's shell — confirmed by the prompt changing from `ubuntu@...` to `dhiraj@...`.
  
-![Creating a user, setting a password, and switching user](images/day3-useradd.png)
- 
+
 ---
  
 ## Part 7: Deploying My First Web Page on Nginx
@@ -207,8 +193,7 @@ http://<your-public-ip>
  
 Here's mine, live — a small "DevOps Zero to Hero" progress tracker page:
  
-![My deployed Nginx page](images/day3-nginx-deployed.png)
- 
+![image alt](https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/3b1c525a705d453b36470308d2eb6cf116ab1a64/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-24%20183711.png)
 ---
  
 ## Part 8: Real Scenarios — Symptom → Command → Fix
