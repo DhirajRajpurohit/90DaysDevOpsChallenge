@@ -26,7 +26,7 @@ Linux is built in layers:
  
 When you type a command like `ls`, the shell interprets it, asks the kernel to read the directory, and prints the result back to you.
 
-![image alt]{https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/687dc52eb74ddd2cd316f727ff04b6675793c40f/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-25%20171959.png}
+![image alt](https://github.com/DhirajRajpurohit/90DaysDevOpsChallenge/blob/687dc52eb74ddd2cd316f727ff04b6675793c40f/Linux/Day1/Practical%20Hand-on%20Images/Screenshot%202026-06-25%20171959.png)
 
 
  
