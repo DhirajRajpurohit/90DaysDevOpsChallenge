@@ -1,4 +1,4 @@
-# Day 6 — Topics Covered
+# Day 5 — Topics Covered
 
 📦 **Module:** Storage | **Focus:** AWS EBS Volumes & Linux LVM
 
