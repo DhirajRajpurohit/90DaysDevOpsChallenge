@@ -1,0 +1,60 @@
+1  docker ps
+    2  mkdir git_repos
+    3  cd git_repos
+    4  git clone https://github.com/LondheShubham153/flask-app-ecs.git
+    5  ls
+    6  cd flask-app-ecs
+    7  ls
+    8  docker build -t flask-app:latest Dockerfile
+    9  vim Dockerfile
+   10  docker build -t flask-app:latest .
+   11  docker images
+   12  docker rmi  fea39cf19e5a  b877e50bd90d
+   13  docker images
+   14  ls
+   15  cat Dockerfile
+   16  docker run -d -p 80:80 flask-app:latest
+   17  docker ps
+   18  vim Dockerfile
+   19  docker images
+   20  docker rmi flask-app:latest
+   21  docker ps
+   22  docker stop e0ba3aa8c054
+   23  docker rm e0ba3aa8c054
+   24  docker rmi  af5385931b66
+   25  docker images
+   26  vim Dockerfile
+   27  docker images
+   28  cd ..
+   29  git clone https://github.com/LondheShubham153/two-tier-flask-app.git
+   30  ls
+   31  cd  two-tier-flask-app
+   32  free -h
+   33  echo 1 > /proc/sys/vm/drop_caches
+   34  sudo  echo 1 > /proc/sys/vm/drop_caches
+   35  sudo su
+   36  free -h
+   37  ls
+   38  ls -a
+   39  touch .env
+   40  vim .env
+   41  cat .env
+   42  docker build -t flask-app .
+   43  docker ps
+   44  docker network create twotier
+   45  docker network ls
+   46  docker run -d --name mysql -v mysql_data:/var/lib/mysql --network=twotier -e MYSQL_PASSWORD=admin -e MYSQL_USER=admin -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=tws_db -p 3306:3306 mysql:latest
+   47  docker ps
+   48  docker network inspect twotier
+   49  vim .env
+   50  vim.env
+   51  vim .env
+   52  cat .env
+   53  docker run -d -p 5000:5000 --network=twotier --name flaskapp -e MYSQL_HOST=mysql -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -e MYSQL_DB=tws_db flask-app:latest
+   54  docker ps
+   55  docker network inspect twotier
+   56  docker ps
+   57  docker logs 6976876ee039
+   58  docker ps
+   59  docker exec -it 4e4c417ea9d1
+   60  history
